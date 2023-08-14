@@ -1,56 +1,85 @@
 #include "lists.h"
-#include <stdlib.h>
 
 /**
- * reverse_array - reverses the content of an array of integers
- * @a: int array to reverse
- * @n: number of elements in the array
- * Return: concatenated string
+ * is_palindrome - checks if a singly linked list is a palindrome
+ * @head: pointer to pointer to the head of the list
+ * Return: 1 if palindrome, 0 otherwise
  */
-
-void reverse_array(int *a, int n)
-{
-        int *begin = a;
-        int *end;
-        int hold = 0;
-
-        end = a + n - 1;
-        for (; begin < end; begin++, end--)
-        {
-                hold = *end;
-                *end = *begin;
-                *begin = hold;
-        }
-}
-
-/**
- * is_palindrome - Return 1  if palindrome, 0 if not
- * @head: linked list
- * Return: Return 1  if palindrome, 0 if not
- */
-
 int is_palindrome(listint_t **head)
 {
-        int size, *list, *rev;
-        listint_t *copy = *head;
+    listint_t *slow = *head, *fast = *head, *prev_slow = *head;
+    listint_t *second_half, *mid_node = NULL;
+    int palindrome = 1;
 
-        if (!head || !copy)
-                return (0);
-        if (!copy->next)
-                return (1);
+    if (*head != NULL && (*head)->next != NULL)
+    {
+        while (fast != NULL && fast->next != NULL)
+        {
+            fast = fast->next->next;
+            prev_slow = slow;
+            slow = slow->next;
+        }
 
-        list = malloc(sizeof(int *));
-        if (!list)
-                return (0);
-        rev = malloc(sizeof(int *));
-        if (!rev)
-                return (0);
-        for (size = 0; copy; copy = copy->next, size++)
-                list[size] = copy->n;
+        if (fast != NULL)
+        {
+            mid_node = slow;
+            slow = slow->next;
+        }
 
-        list = rev;
-        reverse_array(rev, size);
-        if (list == rev)
-                return (1);
-        return (0);
+        second_half = slow;
+        prev_slow->next = NULL;
+        reverse_list(&second_half);
+
+        palindrome = compare_lists(*head, second_half);
+
+        if (mid_node != NULL)
+        {
+            prev_slow->next = mid_node;
+            mid_node->next = second_half;
+        }
+        else
+        {
+            prev_slow->next = second_half;
+        }
+    }
+
+    return palindrome;
 }
+
+/**
+ * reverse_list - reverses a linked list
+ * @head: pointer to pointer to the head of the list
+ */
+void reverse_list(listint_t **head)
+{
+    listint_t *prev = NULL, *current = *head, *next;
+
+    while (current != NULL)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    *head = prev;
+}
+
+/**
+ * compare_lists - compares two linked lists
+ * @list1: pointer to the head of the first list
+ * @list2: pointer to the head of the second list
+ * Return: 1 if lists are equal, 0 otherwise
+ */
+int compare_lists(listint_t *list1, listint_t *list2)
+{
+    while (list1 != NULL && list2 != NULL)
+    {
+        if (list1->n != list2->n)
+            return 0;
+        list1 = list1->next;
+        list2 = list2->next;
+    }
+    return (list1 == NULL && list2 == NULL);
+}
+
