@@ -33,23 +33,23 @@ int is_palindrome(listint_t **head)
 	int size, *list, *rev;
 	listint_t *copy = *head;
 
-        if (!head || !copy)
-        	return (0);
-        if (!copy->next)
-                return (1);
+	if (!head || !copy)
+		return (0);
+	if (!copy->next)
+		return (1);
 
-        list = malloc(sizeof(int *));
-        if (!list)
-                return (0);
-        rev = malloc(sizeof(int *));
-        if (!rev)
-                return (0);
-        for (size = 0; copy; copy = copy->next, size++)
-                list[size] = copy->n;
+	list = malloc(sizeof(int *));
+	if (!list)
+		return (0);
+	rev = malloc(sizeof(int *));
+	if (!rev)
+		return (0);
+	for (size = 0; copy; copy = copy->next, size++)
+		list[size] = copy->n;
 
-        list = rev;
-        reverse_array(rev, size);
-        if (list == rev)
-	       	return (1);
-        return (0);
+	list = rev;
+	reverse_array(rev, size);
+	if (list == rev)
+		return (1);
+	return (0);
 }
