@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This module defines the Square class."""
 
-class Squarei:
+class Square:
     """
     The Square class represents a square shape.
 
