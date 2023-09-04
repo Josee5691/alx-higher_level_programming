@@ -57,14 +57,12 @@ class Rectangle:
         """
         method to get area
         """
-        return self.width * self.height
+        return self._width * self._height
 
     def perimeter(self):
         """
         method to get perimeter
         """
-        if self._width == 0 or self._height == 0:
-            return 0
         return self._width * 2 + self._height * 2
 
     def __str__(self):
@@ -72,12 +70,22 @@ class Rectangle:
         print rectangle using #
         """
         string = ""
-        if self.width == 0 or self.height == 0:
+        if self._width == 0 or self._height == 0:
             string += "\n"
-            return ""
-        else:
-            for i in range(self.height):
-                string += "#" * self.width
-                if i < self.height - 1:
-                    string += "\n"
-            return string
+            return
+        for i in range(self._height):
+            string += "#" * self._width + "\n"
+        return string[:-1]
+
+    def __repr__(self):
+        """
+        print string representing width and height of rectangle
+        """
+        string = "Rectangle(" + str(self._width) + ", " + str(self._height) + ")"
+        return string
+
+    def __del__(self):
+        """
+        deletes rectangle
+        """
+        print("Bye rectangle...")
