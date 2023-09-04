@@ -14,15 +14,15 @@ class Rectangle:
         """
         Initialize variables
         """
-        self._width = width
-        self._height = height
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
         """
         returns width value
         """
-        return self._width
+        return self.__width
 
     @width.setter
     def width(self, value):
@@ -33,14 +33,14 @@ class Rectangle:
             raise TypeError("width must be an integer")
         elif value < 0:
             raise ValueError("width must be >= 0")
-        self._width = value
+        self.__width = value
 
     @property
     def height(self):
         """
         returns height value
         """
-        return self._height
+        return self.__height
 
     @height.setter
     def height(self, value):
@@ -51,34 +51,35 @@ class Rectangle:
             raise TypeError("height must be an integer")
         elif value < 0:
             raise ValueError("height must be >= 0")
-        self._height = value
+        self.__height = value
 
     def area(self):
         """
         method to get area
         """
-        return self._width * self._height
+        return self.__width * self.__height
 
     def perimeter(self):
         """
         method to get perimeter
         """
-        return self._width * 2 + self._height * 2
+        return self.__width * 2 + self.__height * 2
 
     def __str__(self):
         """
         print rectangle using #
         """
         string = ""
-        if self._width == 0 or self._height == 0:
+        if self.__width == 0 or self.__height == 0:
             string += "\n"
             return
         for i in range(self.__height):
-            string += "#" * self._width + "\n"
+            string += "#" * self.__width + "\n"
         return string[:-1]
 
     def __repr__(self):
         """
         print string representing width and height of rectangle
         """
-        return f"Rectangle({self._width}, {self._height})"
+        string = "Rectangle(" + str(self.width) + ", " + str(self.height) + ")"
+        return string
