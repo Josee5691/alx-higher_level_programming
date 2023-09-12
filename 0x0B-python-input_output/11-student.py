@@ -14,3 +14,6 @@ class Student:
     def to_json(self, attrs=None):
         """ return a dict of self """
         return vars(self)
+
+    def reload_from_json(self, json):
+        return None
