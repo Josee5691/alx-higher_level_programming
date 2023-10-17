@@ -1,3 +1,3 @@
---script that gets all
+-- script that gets all
 SHOW databases;
 
