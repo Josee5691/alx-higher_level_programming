@@ -1,0 +1,2 @@
+-- grouping
+SELECT score, COUNT(score) AS number FROM second_table GROUPBY score ORDER BY score DESC;
