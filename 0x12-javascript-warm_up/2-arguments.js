@@ -1,7 +1,7 @@
 #!/usr/bin/node
-const first = "No argument";
-const second = "Argument found";
-const third = "Arguments found";
+const first = 'No argument';
+const second = 'Argument found';
+const third = 'Arguments found';
 
 const numOfArgs = process.argv.length;
 

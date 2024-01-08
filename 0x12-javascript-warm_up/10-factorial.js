@@ -1,14 +1,15 @@
 #!/usr/bin/node
+
 let num = parseInt(process.argv[2]);
 
-function factorial(n){
-	if(n <= 1)
-		return 1;
-	else
-		return n * factorial(n-1);
+function factorial (n){
+  if (n <= 1)
+    return 1;
+  else
+    return n * factorial(n-1);
 }
 
 if (isNaN(num))
-	console.log(1);
+  console.log(1);
 else
-	console.log(factorial(num));
+  console.log(factorial(num));
