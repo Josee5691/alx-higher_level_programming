@@ -11,4 +11,3 @@ if (length < 4) {
 else {
   console.log(secondBiggest(arr.slice(2, length)));
 }
-
