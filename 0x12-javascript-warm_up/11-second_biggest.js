@@ -1,13 +1,15 @@
 #!/usr/bin/node
-const arr = process.argv;
-const length = arr.length;
-function secondBiggest (arr) {
-  arr.sort((a, b) => (b - a));
-  return arr[1];
+
+const a = process.argv;
+const size = a.length;
+
+function secondBiggest (a) {
+  a.sort((a, b) => b - a);
+  return a[1];
 }
-if (length < 4) {
+
+if (size < 4) {
   console.log(0);
-}
-else {
-  console.log(secondBiggest(arr.slice(2, length)));
+} else {
+  console.log(secondBiggest(a.slice(2, size)));
 }
