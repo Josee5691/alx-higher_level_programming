@@ -6,7 +6,7 @@ const numOfArgs = process.argv.length;
 if (numOfArgs < 3) {
   console.log(first);
 }
-else if (numOfArgs === 3) {
+else if (numOfArgs < 4) {
   console.log(second);
 }
 else {
