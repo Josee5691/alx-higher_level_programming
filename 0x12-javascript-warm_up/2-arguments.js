@@ -5,10 +5,8 @@ const third = 'Arguments found';
 const numOfArgs = process.argv.length;
 if (numOfArgs < 3) {
   console.log(first);
-}
-else if (numOfArgs < 4) {
+} else if (numOfArgs < 4) {
   console.log(second);
-}
-else {
+} else {
   console.log(third);
 }
