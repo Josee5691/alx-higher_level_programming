@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 # find the peak of a list in an unsorted list
 
 def find_peak(list_of_integers):
